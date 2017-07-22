@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
 
 	void Update () {
 		Vector3 newPosition = transform.position;
-		newPosition.x += Input.GetAxis("Horizontal") * Time.deltaTime * movementMultiplier;
+        newPosition.x += Input.GetAxis("Horizontal") * movementMultiplier* Time.deltaTime;
 		transform.position = newPosition;
 	}
 }

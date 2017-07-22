@@ -24,9 +24,11 @@ GameObject:
   - component: {fileID: 23267837934678072}
   - component: {fileID: 114677614408295640}
   - component: {fileID: 54015233996845538}
+  - component: {fileID: 114621508463389934}
+  - component: {fileID: 114897672511618352}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,6 +100,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &114621508463389934
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1094917651162820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb578f5b6587a884cbb18b3d82b5587e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementMulitplier: 10
+  screenEdgeDisplacement: 100
+  dropDistance: 1.5
 --- !u!114 &114677614408295640
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -110,9 +126,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosion: {fileID: 1342379829659554, guid: cac426bdef2ca46e8a769e4d55322aed, type: 2}
+  audio: {fileID: 1595591791384624, guid: afce78f2171d0d842aaa9c117340a5a0, type: 2}
   explosionForce: 1000
   spawnRadius: 1
-  numGibs: 50
+  numGibs: 100
+--- !u!114 &114897672511618352
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1094917651162820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 410f70f9462e2cf44922a061e32a7e35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointValue: 100
 --- !u!136 &136499678424494270
 CapsuleCollider:
   m_ObjectHideFlags: 1

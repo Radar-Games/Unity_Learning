@@ -6,29 +6,23 @@ public class GibOnCollide : MonoBehaviour
 {
 	
 	public GameObject explosion;
+    public GameObject audio;
 	public float explosionForce;
-	public float spawnRadius;
+    public float spawnRadius;
 	public int numGibs;
 
-	private Rigidbody rb;
-	
-	// Use this for initialization
-	void Start () {
-		rb = GetComponent<Rigidbody>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
-	void OnTriggerEnter()
+	void OnTriggerEnter(Collider other)
 	{
-		for(int i = 0; i < numGibs; i++)
+        if (other.tag != "Projectile")
+        {
+            return;
+        }
+        for (int i = 0; i < numGibs; i++)
 		{
 			GameObject gibInstance = Instantiate(explosion, transform.position + Random.insideUnitSphere * spawnRadius, transform.rotation) as GameObject;
 			gibInstance.GetComponent<Rigidbody>().AddExplosionForce(explosionForce, transform.position, spawnRadius);
 		}
+        Instantiate(audio, transform.position, transform.rotation);
 		Destroy(gameObject);
 	}
 }
