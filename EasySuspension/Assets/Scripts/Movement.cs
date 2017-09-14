@@ -7,32 +7,42 @@ public class Movement : MonoBehaviour
 {
 
     public WheelCollider FrontWheel;
-    public WheelCollider BackWheel;
+	public WheelCollider BackWheel;
+	public Rigidbody rb;
     public float torque;
     public float turningSpeed;
     public Vector3 com;
-    public Rigidbody rb;
     private float leaning;
-    
+
+    void FixedUpdate()
+    {
+        leaning = 0;
+    }
+
     void Update ()
     {
         rb = GetComponent<Rigidbody>();
 
         BackWheel.motorTorque = Input.GetAxis("Vertical") * torque;
+        leaning = Input.GetAxis("Horizontal") * -0.25f;
         FrontWheel.steerAngle = Input.GetAxis("Horizontal") * turningSpeed;
 
-        if(rb.rotation.z < 10)
-        {
-            com.x = -0.05f;
-        }
-        else if (rb.rotation.z > 10)
-        {
-            com.x = 0.05f;
-        }
-        else
-        {
-            com.x = 0;
-        }
+        //if (Input.GetKeyDown("z") && !Input.GetKeyDown("x")) 
+        //{
+        //    leaning = -1;
+        //    Debug.Log("left");
+        //}
+        //else if (Input.GetKeyDown("x") && !Input.GetKeyDown("z"))
+        //{
+        //    leaning = 1;
+        //    Debug.Log("right");
+        //}
+        //else
+        //{
+        //    leaning = 0;
+        //}
+
+        com.x = leaning / 2;
 
         rb.centerOfMass = com;
     }
