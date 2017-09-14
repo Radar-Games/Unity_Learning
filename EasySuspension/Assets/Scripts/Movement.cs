@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-
     public WheelCollider FrontWheel;
 	public WheelCollider BackWheel;
 	public Rigidbody rb;
@@ -24,25 +23,24 @@ public class Movement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
 
         BackWheel.motorTorque = Input.GetAxis("Vertical") * torque;
-        leaning = Input.GetAxis("Horizontal") * -0.25f;
         FrontWheel.steerAngle = Input.GetAxis("Horizontal") * turningSpeed;
 
-        //if (Input.GetKeyDown("z") && !Input.GetKeyDown("x")) 
-        //{
-        //    leaning = -1;
-        //    Debug.Log("left");
-        //}
-        //else if (Input.GetKeyDown("x") && !Input.GetKeyDown("z"))
-        //{
-        //    leaning = 1;
-        //    Debug.Log("right");
-        //}
-        //else
-        //{
-        //    leaning = 0;
-        //}
+        if (Input.GetKey("z") && !Input.GetKey("x")) 
+        {
+            leaning = -0.25f;
+            Debug.Log("left");
+        }
+        else if (Input.GetKey("x") && !Input.GetKey("z"))
+        {
+            leaning = 0.25f;
+            Debug.Log("right");
+        }
+        else
+        {
+            leaning = 0;
+        }
 
-        com.x = leaning / 2;
+        com.x = leaning;
 
         rb.centerOfMass = com;
     }
