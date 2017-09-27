@@ -30,16 +30,6 @@ public class InAirControl : MonoBehaviour {
             {
                 newCom.z += -speed2 * (rotationz * multi);
             }
-
-            if (rotationx > 3)
-            {
-                newCom.x += -speed2 * (rotationx * multi);
-            }
-
-            if (rotationx < -3)
-            {
-                newCom.x += speed2 * (rotationx * multi);
-            }
         }
 
         bool i = false;
@@ -65,6 +55,18 @@ public class InAirControl : MonoBehaviour {
         if (Input.GetKey("h") && !Input.GetKey("f"))
         {
             newCom.z = -speed;
+            i = true;
+        }
+
+        if (Input.GetKey("r") && !Input.GetKey("y"))
+        {
+            newCom.y = speed;
+            i = true;
+        }
+
+        if (Input.GetKey("y") && !Input.GetKey("r"))
+        {
+            newCom.y = -speed;
             i = true;
         }
 
